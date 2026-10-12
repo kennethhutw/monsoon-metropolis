@@ -6,6 +6,7 @@ Submission for the **Monad Metropolis Hackathon** — Trust, Identity & AI Infra
 
 - **Live app:** https://monsoon-app-alpha.vercel.app
 - **Videos:** see the submission page (pitch, technical demo, Cleanverse demo)
+- **Pitch deck:** [`monsoon-pitch.html`](monsoon-pitch.html)
 
 ## Repository layout
 
@@ -13,6 +14,7 @@ Submission for the **Monad Metropolis Hackathon** — Trust, Identity & AI Infra
 |---|---|
 | [`app/`](app/) | Next.js web app with five role-based portals (Bank, Exporter, Importer, Researcher, Admin). Start with [`app/README.md`](app/README.md). |
 | [`contracts/`](contracts/) | Solidity contracts (ComplianceRegistry, InvoiceAsset, FinancingPool), tests, deployment and onboarding scripts. Start with [`contracts/README.md`](contracts/README.md). |
+| [`monsoon-pitch.html`](monsoon-pitch.html) | The 5-slide pitch deck used in the pitch video — a single self-contained HTML file. Download it (or clone the repo) and open it in a browser; arrow keys / space to move, `F` for fullscreen. GitHub shows this file as source, not as a rendered page. |
 
 ### Repository note
 

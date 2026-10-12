@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monsoon — Pitch Deck</title>
+<style>
+  :root {
+    --bg: #0a1424;
+    --bg-2: #0d1b2e;
+    --ink: #f3f6fb;
+    --ink-soft: #9fb0c8;
+    --ink-faint: #6d819e;
+    --line: #1c2c44;
+    --teal: #4fd1c0;
+    --teal-deep: #1f8f84;
+    --amber: #f0a64a;
+    --card: #101f35;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #050b14; }
+  body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: var(--ink); }
+
+  #stage {
+    position: absolute; left: 50%; top: 50%;
+    width: 1920px; height: 1080px;
+    transform-origin: center center;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    padding: 110px 190px 100px;
+    opacity: 0; visibility: hidden;
+    transition: opacity .35s ease, visibility .35s;
+    background:
+      radial-gradient(ellipse 900px 600px at 82% 12%, rgba(31, 143, 132, .22), transparent 70%),
+      linear-gradient(180deg, var(--bg-2), var(--bg));
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+  @media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
+
+  .eyebrow {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 24px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--teal); font-weight: 700;
+  }
+  h1, h2 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; text-wrap: balance; }
+  h2 { font-size: 84px; margin-top: 28px; max-width: 1400px; }
+  .footer {
+    position: absolute; left: 190px; right: 190px; bottom: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--line); padding-top: 28px;
+    font-family: Consolas, "Courier New", monospace; font-size: 20px;
+    letter-spacing: .06em; color: var(--ink-faint); text-transform: uppercase;
+  }
+  .wordmark { font-family: "Segoe UI", Arial, sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
+  .wordmark b { color: var(--teal); font-weight: 800; }
+
+  /* Slide 1 */
+  .s1 .big { font-size: 270px; font-weight: 900; letter-spacing: -0.04em; line-height: .95; margin-top: 56px; }
+  .s1 .big i { color: var(--teal); font-style: normal; }
+  .s1 .sub { font-size: 52px; color: var(--ink-soft); margin-top: 14px; font-weight: 600; }
+  .s1 .rule { width: 92px; height: 3px; background: var(--teal-deep); margin: 44px 0 40px; }
+  .s1 .body { font-size: 42px; line-height: 1.5; color: #d3dcea; max-width: 1180px; }
+  .s1 .body strong { color: #fff; }
+
+  /* Slide 2 — flow */
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; margin-top: 70px; position: relative; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 34px 28px 32px; min-height: 360px; position: relative; }
+  .step .n { font-family: Consolas, monospace; color: var(--teal); font-size: 24px; font-weight: 700; letter-spacing: .1em; }
+  .step h3 { font-size: 40px; margin: 18px 0 14px; line-height: 1.1; }
+  .step p { font-size: 27px; line-height: 1.4; color: var(--ink-soft); }
+  .step:not(:last-child)::after {
+    content: ""; position: absolute; right: -23px; top: 50%; width: 22px; height: 2px; background: var(--teal-deep);
+  }
+  .note { margin-top: 44px; font-size: 32px; color: var(--ink-soft); display: flex; gap: 16px; align-items: center; }
+  .note .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--teal); flex: none; }
+  .note strong { color: var(--ink); }
+
+  /* Slide 3 — architecture */
+  .arch { margin-top: 44px; }
+  .roles { display: flex; gap: 18px; justify-content: center; }
+  .role { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 34px; font-size: 28px; font-weight: 700; }
+  .app { margin: 26px auto 0; max-width: 980px; background: rgba(79, 209, 192, .09); border: 2px solid var(--teal-deep); border-radius: 18px; padding: 22px 34px; display: flex; justify-content: space-between; align-items: center; }
+  .app .t { font-size: 38px; font-weight: 800; }
+  .app .t small { display: block; font-family: Consolas, monospace; font-size: 18px; letter-spacing: .18em; color: var(--teal); margin-bottom: 4px; }
+  .app .chips span { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 8px 16px; font-size: 22px; margin-left: 10px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 30px; }
+  .col h4 { font-family: Consolas, monospace; font-size: 21px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 16px; }
+  .col.ext h4 { color: var(--amber); }
+  .col.chain h4 { color: var(--teal); }
+  .box { border-radius: 12px; padding: 15px 24px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: baseline; font-size: 29px; font-weight: 700; }
+  .box small { font-size: 21px; font-weight: 500; color: var(--ink-soft); }
+  .ext .box { background: rgba(240, 166, 74, .08); border: 1px solid rgba(240, 166, 74, .45); }
+  .chain .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .chain .box { background: rgba(79, 209, 192, .07); border: 1px solid rgba(79, 209, 192, .45); flex-direction: column; margin: 0; gap: 4px; text-align: center; align-items: center; }
+  .s3 h2 { font-size: 68px; margin-top: 14px; }
+  .s3 .arch { margin-top: 26px; }
+  .s3 .app { margin-top: 20px; padding: 16px 34px; }
+  .s3 .cols { margin-top: 22px; }
+  .s3 .col h4 { margin-bottom: 12px; }
+  .s3 .box { padding: 11px 22px; margin-bottom: 10px; font-size: 27px; }
+  .s3 .chain .grid { gap: 10px; }
+  .s3 .chain .box { margin: 0; }
+  .legend { position: absolute; left: 190px; bottom: 138px; font-size: 22px; color: var(--ink-faint); display: flex; gap: 36px; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 10px; }
+
+  /* Slide 4 — status */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 64px; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 44px 48px; min-height: 470px; }
+  .panel h3 { font-family: Consolas, monospace; font-size: 24px; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); margin-bottom: 26px; }
+  .panel.honest h3 { color: var(--amber); }
+  .panel ul { list-style: none; }
+  .panel li { font-size: 34px; line-height: 1.38; color: #d3dcea; padding-left: 36px; position: relative; margin-bottom: 20px; }
+  .panel li::before { content: ""; position: absolute; left: 0; top: 19px; width: 14px; height: 3px; background: var(--teal-deep); }
+  .panel.honest li::before { background: var(--amber); }
+
+  /* Slide 5 — close */
+  .s5 h2 { font-size: 118px; margin-top: 40px; }
+  .s5 h2 span { color: var(--teal); }
+  .s5 .sub { font-size: 44px; color: var(--ink-soft); margin-top: 34px; }
+  .s5 .links { margin-top: 70px; font-family: Consolas, monospace; font-size: 30px; color: var(--ink-soft); line-height: 1.9; }
+  .s5 .links b { color: var(--ink); font-weight: 600; }
+
+  #hud { position: fixed; right: 18px; bottom: 14px; font: 13px Consolas, monospace; color: #3f526d; letter-spacing: .08em; user-select: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <section class="slide s1 active">
+    <div class="eyebrow">Monad Metropolis · Trust, Identity &amp; AI Infrastructure</div>
+    <div class="big">60–120<i>.</i></div>
+    <div class="sub">days SME exporters across Asia wait to get paid</div>
+    <div class="rule"></div>
+    <div class="body">Working capital dries up exactly when it's needed most — and the same invoice can be <strong>pledged to two lenders at once</strong>, because paper documents don't cross-check themselves.</div>
+    <div class="footer"><span class="wordmark">Mon<b>soon</b></span><span>Compliant trade receivables financing — verified end to end</span></div>
+  </section>
+
+  <section class="slide s2">
+    <div class="eyebrow">How it works</div>
+    <h2>One invoice, one verified path.</h2>
+    <div class="flow">
+      <div class="step"><div class="n">01</div><h3>Verify</h3><p>Exporter and buyer hold role-matched Cleanverse credentials (CVI).</p></div>
+      <div class="step"><div class="n">02</div><h3>Tokenize</h3><p>The invoice is minted as an NFT, hash-locked so it can never be financed twice.</p></div>
+      <div class="step"><div class="n">03</div><h3>Confirm</h3><p>The named buyer confirms the receivable on-chain.</p></div>
+      <div class="step"><div class="n">04</div><h3>Review</h3><p>Bank gets an AI assessment, a news scan and a fail-closed AML screen.</p></div>
+      <div class="step"><div class="n">05</div><h3>Settle</h3><p>Funds disburse in A-Token, a Travel Rule record is written, repayment releases the NFT.</p></div>
+    </div>
+    <div class="note"><span class="dot"></span><span><strong>Enforced in the contracts</strong> — minting, transfers and financing submission revert without valid CVI.</span></div>
+    <div class="footer"><span class="wordmark">Mon<b>soon</b></span><span>Monad Testnet</span></div>
+  </section>
+
+  <section class="slide s3">
+    <div class="eyebrow">System architecture</div>
+    <h2>Who talks to what</h2>
+    <div class="arch">
+      <div class="roles"><div class="role">Exporter</div><div class="role">Importer / Buyer</div><div class="role">Bank</div><div class="role">Admin</div></div>
+      <div class="app"><div class="t"><small>NEXT.JS</small>Monsoon App</div><div class="chips"><span>Frontend Pages</span><span>API Routes</span></div></div>
+      <div class="cols">
+        <div class="col ext">
+          <h4>External services</h4>
+          <div class="box">Cleanverse API <small>CVI · CVA</small></div>
+          <div class="box">GoPlus Security <small>Wallet AML</small></div>
+          <div class="box">Kimi K2.6 <small>AI case assessment</small></div>
+          <div class="box">Supabase <small>cases · history</small></div>
+        </div>
+        <div class="col chain">
+          <h4>Monad Testnet — smart contracts</h4>
+          <div class="grid">
+            <div class="box">ComplianceRegistry<small>CVI whitelist</small></div>
+            <div class="box">InvoiceAsset<small>Invoice NFT</small></div>
+            <div class="box">FinancingPool<small>Disburse · Repay</small></div>
+            <div class="box">A-Token (CVA)<small>Settlement currency</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="legend"><span><i style="background:var(--teal)"></i>Enforced on-chain, Monad Testnet</span><span><i style="background:var(--amber)"></i>Live external services</span></div>
+    <div class="footer"><span class="wordmark">Mon<b>soon</b></span><span>Compliant trade receivables financing</span></div>
+  </section>
+
+  <section class="slide s4">
+    <div class="eyebrow">Who it's for · where it stands</div>
+    <h2>Built for bank trade-finance desks.</h2>
+    <div class="two">
+      <div class="panel">
+        <h3>Who &amp; how</h3>
+        <ul>
+          <li>Trade-finance and corporate-banking teams at mid-size banks in Asia</li>
+          <li>Start with a sandbox pilot on a slice of receivables</li>
+          <li>A fraud-control and audit layer on top of the existing process, not a replacement</li>
+        </ul>
+      </div>
+      <div class="panel honest">
+        <h3>Honest status</h3>
+        <ul>
+          <li>Working testnet prototype on Monad</li>
+          <li>No signed partners yet</li>
+          <li>Next: CVI checks inside repayment and disbursement functions</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer"><span class="wordmark">Mon<b>soon</b></span><span>Trust, Identity &amp; AI Infrastructure</span></div>
+  </section>
+
+  <section class="slide s5">
+    <div class="eyebrow">Monsoon</div>
+    <h2>Compliant trade finance, <span>verified end to end.</span></h2>
+    <div class="sub">Built on Monad · Kenneth Hu</div>
+    <div class="links">
+      Live app &nbsp; <b>monsoon-app-alpha.vercel.app</b><br>
+      Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>github.com/kennethhutw/monsoon-app</b>
+    </div>
+    <div class="footer"><span class="wordmark">Mon<b>soon</b></span><span>Thank you</span></div>
+  </section>
+
+</div>
+<div id="hud">← → · F fullscreen</div>
+
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var hud = document.getElementById('hud');
+  var i = 0;
+
+  function fit() {
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'translate(-50%, -50%) scale(' + s + ')';
+  }
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (el, k) { el.classList.toggle('active', k === i); });
+    hud.textContent = (i + 1) + ' / ' + slides.length + ' · ← → · F fullscreen';
+    try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+  }
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].indexOf(e.key) > -1) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].indexOf(e.key) > -1) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+    else if (e.key === 'h' || e.key === 'H') hud.style.display = hud.style.display === 'none' ? '' : 'none';
+  });
+  document.addEventListener('click', function () { show(i + 1); });
+  window.addEventListener('resize', fit);
+
+  fit();
+  var start = parseInt((location.hash || '').replace('#', ''), 10);
+  show(isNaN(start) ? 0 : start - 1);
+})();
+</script>
+</body>
+</html>
