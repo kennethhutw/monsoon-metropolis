@@ -1,0 +1,26 @@
+Monsoon Contracts — Deployment Record (retroactive backfill)
+Generated: 2026-07-31T08:03:00+00:00
+Network:   monadTestnet (assumed — not confirmed by this record)
+Deployer:  (unknown — deployment was run outside this session, not captured)
+
+NOTE: This record was reconstructed from addresses already present in
+Monsoon_App/.env.local at the time this file was created. Exact deploy
+timestamp, deployer address, and bank wallet were not captured. Future
+deployments run via `npm run deploy:monad` / `deploy:base` will generate
+a complete, accurate record automatically in this folder.
+
+=== Contract Addresses ===
+ComplianceRegistry: 0x936510cc9a2ae6ef25aab578693c34a0853420af
+  https://testnet.monadexplorer.com/address/0x936510cc9a2ae6ef25aab578693c34a0853420af
+InvoiceAsset:       0xdef7633094bd92092028ddb1a272a59be3be48cc
+  https://testnet.monadexplorer.com/address/0xdef7633094bd92092028ddb1a272a59be3be48cc
+FinancingPool:      0xfa27fe3dbaca0e12240abe1f5bfa56fb55e1cc1b
+  https://testnet.monadexplorer.com/address/0xfa27fe3dbaca0e12240abe1f5bfa56fb55e1cc1b
+Stablecoin:         0x4896530d9b90fe8b480bcfb9301cbcaf6626af13
+  https://testnet.monadexplorer.com/address/0x4896530d9b90fe8b480bcfb9301cbcaf6626af13
+
+=== Add to Monsoon_App/.env.local ===
+NEXT_PUBLIC_COMPLIANCE_REGISTRY=0x936510cc9a2ae6ef25aab578693c34a0853420af
+NEXT_PUBLIC_INVOICE_ASSET=0xdef7633094bd92092028ddb1a272a59be3be48cc
+NEXT_PUBLIC_FINANCING_POOL=0xfa27fe3dbaca0e12240abe1f5bfa56fb55e1cc1b
+NEXT_PUBLIC_STABLECOIN=0x4896530d9b90fe8b480bcfb9301cbcaf6626af13

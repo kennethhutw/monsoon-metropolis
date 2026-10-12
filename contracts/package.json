@@ -1,0 +1,30 @@
+{
+  "name": "monsoon-contracts",
+  "version": "1.0.0",
+  "description": "Monsoon — compliant trade receivables financing smart contracts (Cleanverse CVI/CVA integrated)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "node": "hardhat node",
+    "deploy:localhost": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:monad": "hardhat run scripts/deploy.ts --network monadTestnet",
+    "deploy:base": "hardhat run scripts/deploy.ts --network baseTestnet",
+    "setup:atoken": "hardhat run scripts/setup-atoken.ts --network monadTestnet",
+    "deposit:liquidity": "hardhat run scripts/deposit-liquidity.ts --network monadTestnet",
+    "onboard:exporter": "hardhat run scripts/onboard-exporter.ts --network monadTestnet",
+    "onboard:buyer": "hardhat run scripts/onboard-buyer.ts --network monadTestnet"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
+    "@openzeppelin/contracts": "^5.6.1",
+    "@types/node": "^26.1.2",
+    "dotenv": "^17.4.2",
+    "hardhat": "^3.11.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}

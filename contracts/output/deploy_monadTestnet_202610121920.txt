@@ -1,0 +1,25 @@
+Monsoon Contracts — Deployment Record
+Generated: 2026-10-12T11:20:01.420Z
+Network:   monadTestnet
+Deployer:  0x93ff16a0dc44bc61817ede60e1c705954219877f
+
+=== Contract Addresses ===
+ComplianceRegistry: 0xaf678a90f64a41e176ad47dd8d35458448844c18
+  https://testnet.monadexplorer.com/address/0xaf678a90f64a41e176ad47dd8d35458448844c18
+InvoiceAsset:       0x44f839d2f4127ff28e62fbf6141745b4bc2536c7
+  https://testnet.monadexplorer.com/address/0x44f839d2f4127ff28e62fbf6141745b4bc2536c7
+FinancingPool:      0x6d05312906afe245a2ae8011b3d17b292ebd8551
+  https://testnet.monadexplorer.com/address/0x6d05312906afe245a2ae8011b3d17b292ebd8551
+Stablecoin:         0x25c92CFa4444FC1387D021e7bb5C7079f7486058
+  https://testnet.monadexplorer.com/address/0x25c92CFa4444FC1387D021e7bb5C7079f7486058
+Bank wallet:        0x93ff16a0dc44bc61817ede60e1c705954219877f
+
+=== Parameters ===
+Financing rate (bps): 300
+Advance rate (bps):   8000
+
+=== Add to Monsoon_App/.env.local ===
+NEXT_PUBLIC_COMPLIANCE_REGISTRY=0xaf678a90f64a41e176ad47dd8d35458448844c18
+NEXT_PUBLIC_INVOICE_ASSET=0x44f839d2f4127ff28e62fbf6141745b4bc2536c7
+NEXT_PUBLIC_FINANCING_POOL=0x6d05312906afe245a2ae8011b3d17b292ebd8551
+NEXT_PUBLIC_STABLECOIN=0x25c92CFa4444FC1387D021e7bb5C7079f7486058
