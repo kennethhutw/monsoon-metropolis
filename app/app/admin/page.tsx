@@ -254,9 +254,9 @@ export default function AdminPage() {
         {/* System health */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {!health ? <Skeleton className="h-20 rounded-xl" /> : (
-            <div className={`rounded-xl border p-4 flex items-center justify-between ${health.claudeApiStatus === 'ok' ? 'bg-risk-low/10 border-risk-low/30' : 'bg-error-container/40 border-error/30'}`}>
-              <p className="text-body-md font-semibold text-ink">AI Provider {health.claudeApiLatencyMs && <span className="text-label-md text-ink-faint font-normal">· {health.claudeApiLatencyMs}ms</span>}</p>
-              {health.claudeApiStatus === 'ok' ? <CheckCircle2 size={20} className="text-risk-low" /> : <XCircle size={20} className="text-error" />}
+            <div className={`rounded-xl border p-4 flex items-center justify-between ${health.aiStatus === 'ok' ? 'bg-risk-low/10 border-risk-low/30' : 'bg-error-container/40 border-error/30'}`}>
+              <p className="text-body-md font-semibold text-ink">AI Provider <span className="text-label-md text-ink-faint font-normal">· {health.aiStatus === 'ok' ? health.aiProvider : 'No API key configured'}</span></p>
+              {health.aiStatus === 'ok' ? <CheckCircle2 size={20} className="text-risk-low" /> : <XCircle size={20} className="text-error" />}
             </div>
           )}
           {!health ? <Skeleton className="h-20 rounded-xl" /> : (

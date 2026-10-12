@@ -13,7 +13,7 @@ export default function AdminHealthPage() {
   useEffect(() => { refresh() }, [])
 
   const items = health ? [
-    { label: 'Claude API', status: health.claudeApiStatus === 'ok', detail: health.claudeApiLatencyMs ? `${health.claudeApiLatencyMs}ms` : undefined },
+    { label: 'AI Assessment', status: health.aiStatus === 'ok', detail: health.aiStatus === 'ok' ? health.aiProvider : 'No API key configured' },
     { label: 'Monad Network', status: health.chainConnected, detail: health.chainConnected ? (health.rpcProvider === 'alchemy' ? 'Connected via Alchemy' : 'Connected') : 'Unreachable' },
     { label: '24h Error Count',  status: health.errors24h === 0, detail: `${health.errors24h} errors` },
   ] : []

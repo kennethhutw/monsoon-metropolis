@@ -11,8 +11,8 @@ export interface AuditLog {
 export interface SystemHealth {
   chainConnected: boolean
   rpcProvider: 'default' | 'alchemy'
-  claudeApiStatus: 'ok' | 'degraded' | 'down'
-  claudeApiLatencyMs?: number
+  aiStatus: 'ok' | 'down'
+  aiProvider: string
   lastUpdated: string
   errors24h: number
 }

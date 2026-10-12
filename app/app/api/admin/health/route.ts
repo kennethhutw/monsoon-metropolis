@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireRole } from '@/lib/auth/requireRole'
 import { SystemHealth } from '@/types/admin'
 import { getServerPublicClient, getRpcProvider } from '@/lib/contracts/serverRpc'
+import { getCaseAi } from '@/lib/ai'
 
 export async function GET(request: NextRequest) {
   const auth = requireRole(request, ['admin'])
@@ -16,11 +17,13 @@ export async function GET(request: NextRequest) {
       console.error('[API] admin/health chain connectivity check failed:', error)
     }
 
-    // Claude API status: presence check only, not a live ping (see docs/changes/20260905_Alchemy即時監控.md)
+    // AI status: whether the provider behind the case assessment has a key configured, not a live ping
+    const caseAi = getCaseAi()
     const health: SystemHealth = {
       chainConnected,
       rpcProvider,
-      claudeApiStatus: process.env.ANTHROPIC_API_KEY ? 'ok' : 'down',
+      aiStatus: caseAi.available ? 'ok' : 'down',
+      aiProvider: caseAi.providerLabel,
       lastUpdated: new Date().toISOString(),
       errors24h: 0,
     }
