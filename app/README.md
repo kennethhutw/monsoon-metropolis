@@ -5,7 +5,7 @@ Compliant trade-receivables financing for Asia's SME exporters, built on **Monad
 Submitted to the **Monad Metropolis Hackathon** (Trust, Identity & AI Infrastructure track) — originally built for the Cleanverse Build: Trusted Assets Hackathon (RWA track).
 
 - **Live app:** https://monsoon-app-alpha.vercel.app
-- **Smart contracts:** [github.com/kennethhutw/monsoon-contract](https://github.com/kennethhutw/monsoon-contract) (ComplianceRegistry, InvoiceAsset, FinancingPool)
+- **Smart contracts:** [`../contracts`](../contracts) in this repository (ComplianceRegistry, InvoiceAsset, FinancingPool)
 
 ## The problem
 

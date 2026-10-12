@@ -2,7 +2,7 @@
 
 Smart contracts for **Monsoon** — compliant trade-receivables financing for Asia's SME exporters, gated by [Cleanverse](https://cleanverse.com) CVI (Verified Identity) and settled in a Cleanverse A-Token (CVA), on Monad Testnet.
 
-- **App repository:** [github.com/kennethhutw/monsoon-app](https://github.com/kennethhutw/monsoon-app)
+- **Web app:** [`../app`](../app) in this repository
 - **Live app:** https://monsoon-app-alpha.vercel.app
 
 Submitted to the Monad Metropolis Hackathon (Trust, Identity & AI Infrastructure track); originally built for the Cleanverse Build: Trusted Assets Hackathon.
