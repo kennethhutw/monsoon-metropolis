@@ -5,7 +5,8 @@ Compliant trade-receivables financing on **Monad Testnet**. An SME exporter turn
 Submission for the **Monad Metropolis Hackathon** — Trust, Identity & AI Infrastructure track (bounties: Cleanverse Verified Identity & Assets, Kimi).
 
 - **Live app:** https://monsoon-app-alpha.vercel.app
-- **Videos:** see the submission page (pitch, technical demo, Cleanverse demo)
+- **Technical demo video:** https://youtu.be/PzfqfYrdKR8
+- **Pitch video:** https://youtu.be/jEuHHEGvqm0
 - **Pitch deck:** [`monsoon-pitch.html`](monsoon-pitch.html)
 
 ## Repository layout
